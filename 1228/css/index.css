@@ -1,0 +1,62 @@
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.obox{
+				background: url(../彩练新闻/九宫格_03.jpg) no-repeat;
+				background-size: 100% 100%;
+				padding-top: 290px;
+				padding-bottom: 290px;
+			}
+			.center{
+				width: 406px;
+				margin: 0 auto;
+				text-align: center;
+				border-left: 5px red solid;
+				border-right: 5px red solid;
+			}
+			.head{
+				width: 100%px;
+				height: 80px;
+				background: #FFFFFF;
+				padding-top: 40px;
+				padding-right: 14px;
+			}
+			.top{
+				width: 100%px;
+				height: 60px;
+				background: #FFFFFF;
+				padding-right: 14px;
+				position: relative;
+				margin-top: -1px;
+			}
+			.top-text{
+				position: absolute;
+				top: 4px;
+				left: 32%;
+				font-family: "微软雅黑";
+				font-size: 24px;
+				font-weight:bold;
+				color: #be183e;
+				letter-spacing: 24px;
+			}
+			.bottom{
+				width: 100%px;
+				height: 140px;
+				background: #FFFFFF;
+				padding-top: 20px;
+				margin-top: -5px;
+				padding-right: 14px;
+				position: relative;
+			}
+			.bottom-text{
+				position: absolute;
+				top: 35px;
+				left: 35%;
+				font-family: "微软雅黑";
+				font-size: 28px;
+			}
+			.bottom-text a{
+				text-decoration: none;
+				color:#f7d679;
+			}

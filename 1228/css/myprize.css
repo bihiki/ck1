@@ -1,0 +1,240 @@
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.obox{
+				position: relative;
+				z-index: 1;
+			}
+			.top{
+				width: 100%;
+				height: 450px;
+				background: url(../彩练新闻/九宫格_02.jpg) no-repeat;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				position: relative;
+			}
+			.top p{
+				position: absolute;
+				top: 86%;
+				left: 42%;
+				font-family: "微软雅黑";
+				font-size: 32px;
+				color: #fadb1f;
+			}
+			.center{
+				width: 100%;
+				height: 750px;
+				background: url(../彩练新闻/九宫格_03.jpg) no-repeat;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: -1px;
+			}
+			.bottom{
+				width: 100%;
+				height: 543px;
+				background: url(../彩练新闻/九宫格_05.jpg) no-repeat;
+				background-size: 100% 100%;
+				margin: 0 auto;
+				margin-top: -1px;
+			}
+			.wdjp{
+				background: #ffffff;
+				border: 5px solid #ed2d1e;
+				width: 80%;
+				height: 64%;
+				position: absolute;
+				top: 26%;
+				left: 90px;
+				z-index: 3;
+				overflow: scroll;
+			}
+			.wdjp h3{
+				font-family: "微软雅黑";
+				font-size: 40px;
+				font-weight: bold;
+				color: #000000;
+				text-align: center;
+				padding-top: 8px;
+			}
+			.list img{
+				border: 1px solid black;
+				width: 220px;
+				height: 180px;
+				padding: 20px 200px 20px 200px;
+				/*padding-left: 200px;
+				padding-right: 200px;*/
+				margin: 20px 0px 0px 76px;
+				/*margin-left: 76px;
+				margin-top: 10px;*/
+			}
+			.list{
+				list-style: none;
+			}
+			.list p{
+				font-family: "微软雅黑";
+				font-size: 32px;
+				color: #000000;
+				text-align: left;
+				padding-top: 8px;
+				padding-left: 10%;
+			}
+			.list .ljdj{
+				font-family: "微软雅黑";
+				font-size: 40px;
+				border-radius: 15px;
+				border: 1px solid #000000;
+				background: #ed2d1e;
+				color: #fadb1f;
+				width: 600px;
+				height: 60px;
+				margin: 20px auto;
+				text-align: center;
+				line-height: 60px;
+			}
+			.jxcj{
+				position: relative;
+				position: fixed;
+				bottom: 40px;
+				left: 160px;
+			}
+			.jxcj img{
+				border: 1px solid #ed2d1e;
+				border-radius: 30px;
+				width: 640px;
+				height: 80px;
+			}
+			.jxcj-text{
+				position: absolute;
+				top: 12px;
+				left: 240px;
+				font-family: "微软雅黑";
+				font-size: 40px;
+				
+			}
+			.jxcj-text a{
+				text-decoration: none;
+				color: #f7d679;
+			}
+			.zzc{
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				background: rgba(0,0,0,0.5);
+				display: none;
+				z-index: 9;
+			}
+			.yxgz_text{
+				width: 624px;
+				height: 520px;
+				border: 3px solid black;
+				border-radius: 30px;
+				margin: 0 auto;
+				overflow: scroll;
+				position: relative;
+				display: none;
+				position: absolute;
+				top: 22%;
+				left: 175px;
+				background: #ffffff;
+				z-index: 10;
+			}
+			.gd{
+				width: 624px;
+				height: 450px;
+				overflow: scroll;
+			}
+			.gd p{
+				padding-left: 20px;
+				line-height: 48px;
+				font-family: "微软雅黑";
+				font-size: 36px;
+			}
+			.gd p:first-child{
+				text-align: center;
+				font-size: 40px;
+				padding: 16px 0 16px 0;
+			}
+			.qd{
+				width: 624px;
+				position: fixed;
+				font-family: "微软雅黑";
+				font-size: 40px;
+				top: 48%;
+				left: 180px;
+				text-align: center;
+				padding: 10px 0 10px 0;
+			}
+			.qd hr{
+				border: 1px solid black;
+			}
+			.xx{
+				width: 624px;
+				height: 360px;
+				display: none;
+				border: 3px solid black;
+				border-radius: 30px;
+				background: #FFFFFF;
+				position: absolute;
+				top: 530px;
+				left: 175px;
+				z-index: 10;
+			}
+			.xx h3{
+				text-align: center;
+				font-family: "微软雅黑";
+				font-size: 40px;
+				padding: 10px 20px 0 0;
+				font-weight: normal;
+			}
+			.xx1 p{
+				text-align: left;
+				font-family: "微软雅黑";
+				font-size: 36px;
+			}
+			.xx1 span{
+				font-weight: bold;
+				padding-left: 24%;
+				font-size: 28px;
+				color: red;
+			}
+			.xx1{
+				width: 100%;
+				height: 60%;
+				margin-left: 80px;
+				margin-top: 34px;
+			}
+			.xx1 input{
+				border: 1px solid black;
+				border-radius: 15px;
+				font-family: "微软雅黑";
+				font-size: 32px;
+				width: 446px;
+				height: 60px;
+				margin: 0 0 20px 0;
+				padding-left: 20px;
+			}
+			.tip{
+				display: none;
+			}	
+			.qr{
+				width: 100%;
+				height: 100%;
+				margin-top: -56px;
+			}
+			.qr hr{
+				border: 1px solid black;
+			}
+			.qr p{
+				float: left;
+				padding: 30px 119px 30px 120px;
+				text-align: left;
+				font-family: "微软雅黑";
+				font-size: 36px;
+			}
+			.link-qd{
+				border-right:2px solid black ;
+			}
+			

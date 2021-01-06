@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/game.css" />
+		<script src="js/jquery-1.12.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				$(function(){
+					setInterval('autoScroll(".yfjp")',1000)
+					//游戏规则点击开启
+					$("a[class='yxgz_a']").click(function(){
+						$(".zzc").css({"display":"block"});
+						$(".yxgz_text").css({"display":"block"});
+					})
+					//游戏规则点击关闭
+					$("a[class='qd_a']").click(function(){
+						$(".zzc").css({"display":"none"});
+						$(".yxgz_text").css({"display":"none"});
+					})
+					//我的奖品按钮
+					$("a[class='wdjp-a']").click(function(){
+						$(".zzc").css({"display":"block"});
+						$(".xx").css({"display":"block"});
+					})
+					//输入信息中的确定按钮
+					$("p[class='link-qd']").click(function(){
+						if(Name() == true && Phone() == true){
+							window.location.href = "myprize.html";
+						}
+						console.log(Name());
+						Name();
+						Phone();
+					})
+					//输入信息中的取消按钮
+					$("p[class='link-qx']").click(function(){
+						$(".tip1").hide();
+						$(".tip2").hide();
+						$(".tip3").hide();
+						$(".tip4").hide();
+						$("#name").val("");
+						$("#phone").val("");
+						$(".zzc").css({"display":"none"});
+						$(".xx").css({"display":"none"});
+					})
+					//九宫格抽奖
+					$('.cj').height($('.cj').width()+'px')
+					$(window).resize(function(){
+				        $('.cj').height($('.cj').width()+'px')
+				    })
+					var t=true
+					$('#star').click(function(){
+						if(t){
+							t=false;
+							var prize = Math.ceil(Math.random()*($('.cj').length-1));
+//							if(prize==8){
+//								prize = Math.ceil(Math.random()*($('.cj').length-2));
+//							}
+							if($('.number').html()>0){
+								$('.number').html($('.number').html()-1);
+								prize += 32;
+								for(var i=1;i<prize;i++){
+									setTimeout(time(i),6*i*i);
+								}
+								setTimeout(function(){
+									t=true;
+									console.log(i);
+									if(i==33){
+										$("#message1").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==34){
+										$("#message2").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==35){
+										$("#message3").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==36){
+										$("#message4").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==37){
+										$("#message5").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==38){
+										$("#message6").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==39){
+										$("#message7").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}else if(i==40){
+										$("#message8").css({"display":"block"});
+										$(".zzc").css({"display":"block"});
+									}
+								},6*prize*prize)
+							}else{
+								$("#message9").css({"display":"block"});
+								$(".zzc").css({"display":"block"});
+							}
+						}
+					})
+					//中奖确定按钮
+					$(".zj2").click(function(){
+						$("#message1").css({"display":"none"});
+						$("#message2").css({"display":"none"});
+						$("#message3").css({"display":"none"});
+						$("#message4").css({"display":"none"});
+						$("#message5").css({"display":"none"});
+						$("#message6").css({"display":"none"});
+						$("#message7").css({"display":"none"});
+						$("#message8").css({"display":"none"});
+						$(".zzc").css({"display":"none"});
+					})
+					//次数用尽确定按钮
+					$(".zj5").click(function(){
+						$("#message9").css({"display":"none"});
+						$(".zzc").css({"display":"none"});
+					})
+					
+					
+				})
+					function time(a){
+				        return function(){
+				            if(a>8){
+				                a=parseInt(a%8)
+				                if(a==0){
+				                    a=8
+				                }
+				            }
+				            $('.cj').removeClass('active');
+				            $('.cj-'+a).addClass('active');
+				        }
+				    }
+				//已发出的奖品
+				function autoScroll(obj){
+						$(obj).find("#J_scroll").animate({
+							marginTop:"-60px"
+						},500,function(){
+							$(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+						})
+					}
+				//验证姓名
+				function Name(){
+					var $name=$("#name").val();
+					var $nameRegular=/^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\.\s]{1,20})$/;
+					if($name==""){
+						$(".tip1").show();
+						$(".tip2").hide();
+						$("#name").val("");
+						return false;
+					}else if(!$nameRegular.test($name)){
+						$(".tip1").hide();
+						$(".tip2").show();
+						$("#name").val("");
+						return false;
+					}else{
+						$(".tip1").hide();
+						$(".tip2").hide();
+						return true;
+					}
+				}
+				
+				//验证手机号码
+				function Phone(){
+					var $phone=$("#phone").val();
+					var $phoneRegular=/^1[3|4|5|7|8|9][0-9]{9}$/;
+					if($phone==""){
+						$(".tip3").show();
+						$(".tip4").hide();
+						$("#phone").val("");
+						return false;
+					}else if(!$phoneRegular.test($phone)){
+						$(".tip3").hide();
+						$(".tip4").show();
+						$("#phone").val("");
+						return false;
+					}else{
+						$(".tip3").hide();
+						$(".tip4").hide();
+						return true;
+					}
+				}
+				
+				
+		</script>
+	</head>
+	<body>
+		<div class="obox">
+				<div class="top">
+					<p class="cjcs">
+						抽奖次数:  <span class="number">3</span>  次
+					</p>
+					<p class="yxgz">
+						<a class="yxgz_a">游戏规则</a>
+					</p>
+				</div>
+				<div class="zzc"></div>
+				<div class="yxgz_text">
+					<div class="gd">
+									<p>游戏规则</p>
+				
+				<p>1. 每名客户每天抽奖有3次机会，点击转盘的【开始抽奖】按钮进行抽奖，转动结束停留的位置就是您获得的奖品；</p>
+				
+				<p>2. 中奖后需填写姓名、电话，兑奖时根据您的填写的信息进行现场兑奖，具体奖项如下：</p>
+				
+				<p>黄封村人参酒两瓶：共100份，总价值12000元</p>
+				
+				<p>莱沃口腔储值卡：共50份，总价值10000元</p>
+				
+				<p>中国联通流量卡：共200份，总价值10000元</p>
+				
+				<p>S5健身俱乐部贵宾卡：共有80份，总价值8000元</p>
+				
+				<p>圣雅瑜伽SPA会所储值卡：共3份，总价值6000元</p>
+				
+				<p>陶进二胡工作室：共20份，总价值6000元</p>
+				
+				<p>蛋壳科技VR体验卡：共50份，总价值2500元</p>
+				
+				<p>3. 抽奖时间：</p>
+				
+				<p>2021年1月1日~3日游戏时间：每天10：00~23：59：59</p>
+				
+				<p>4. 各奖品兑奖方式及时间不同，具体如下：</p>
+				
+				<p>活动最终解释权归彩练新闻所有。</p>
+				</div>
+				<div class="qd">
+					<hr />
+					<p>
+						<a class="qd_a">确定</a>
+					</p>
+				</div>
+				</div>
+				<div class="center">
+					<div class="jgg">
+						<ul class="list">
+							<li class="cj cj-1" id="c1">
+								<img src="彩练新闻/sudoku_01.jpg" />
+							</li>
+							<li class="cj cj-2" id="c2">
+								<img src="彩练新闻/sudoku_02.jpg" />
+							</li>
+							<li class="cj cj-3" id="c3">
+								<img src="彩练新闻/sudoku_03.jpg" />
+							</li>
+							<li class="cj cj-8" id="c8">
+								<img src="彩练新闻/sudoku_09.jpg" />
+							</li>
+							<li id="star">
+								<img src="彩练新闻/sudoku_05.jpg" />
+							</li>
+							<li class="cj cj-4" id="c4">
+								<img src="彩练新闻/sudoku_04.jpg" />
+							</li>
+							<li class="cj cj-7" id="c7">
+								<img src="彩练新闻/sudoku_08.jpg" />
+							</li>
+							<li class="cj cj-6" id="c6">
+								<img src="彩练新闻/sudoku_07.jpg" />
+							</li>
+							<li class="cj cj-5" id="c5">
+								<img src="彩练新闻/sudoku_06.jpg" />
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="xx">
+					<h3>输入信息</h3>
+					<div class="xx1">
+					<p class="p1">姓名：</p>
+					<input type="text" id="name" placeholder="请输入你的真实姓名" />
+					<p class="tip1"><span>姓名不能为空</span></p>
+					<p class="tip2"><span>姓名不合法</span></p>
+					<p class="p2">手机号：</p>
+					<input type="text" id="phone" placeholder="请输入你的手机号码" />
+					<p class="tip3"><span>手机号不能为空</span></p>
+					<p class="tip4"><span>手机号不合法</span></p>
+					</div>
+					<div class="qr">
+						<hr />
+					<p class="link-qd">确定</p>
+					<p class="link-qx">取消</p>
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="wdjp">
+						<img src="彩练新闻/4.png" />
+						<p class="wdjp-text">
+							<a class="wdjp-a">我的奖品</a>
+						</p>
+					</div>
+					<div class="yfjp">
+						<p>已发出的奖品:</p>
+						<div class="gdyc">
+						<ul id="J_scroll">
+							<li>137****9545 获得黄封村人参酒两瓶</li>
+							<li>152****9545 获得中国联通流量卡</li>
+							<li>187****9545 获得蛋壳科技VR体验卡</li>
+							<li>187****9545 获得蛋壳科技VR体验卡</li>
+							<li>139****9545 获得陶进二胡工作室</li>
+							<li>156****9545 获得莱沃口腔储值卡</li>
+							<li>137****9545 获得圣雅瑜伽SPA会所储值卡</li>
+							<li>137****9545 获得黄封村人参酒两瓶</li>
+						</ul>
+						</div>
+					</div>
+				</div>
+						<div id="message1">
+							<h3>提示</h3>
+							<div class="zj">
+							<img src="彩练新闻/sudoku_09.jpg" />
+							<p>感谢参与</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+							</div>
+						</div>
+						<div id="message2">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_01.jpg" />
+							<p>黄封村人参酒</p>
+							<p>120元</p>
+							<p>兑奖时间：截止到2021年2月26日</p>
+							<p>兑奖地址：吉林省酒文化博物馆（亚泰大街9699号）</p>
+							<p>联系电话：0431-88508899</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+					</div>
+						<div id="message3">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_02.jpg" />
+							<p>莱沃口腔储值卡</p>
+							<p>200元</p>
+							<p>兑奖时间：截止到2021年2月31日</p>
+							<p>兑奖地址：工农大路1780号（省中医院东侧）</p>
+							<p>联系电话：0431—89545888</p>
+							<p>注：洗牙4次（不限本人使用）；口腔体检；</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+						</div>
+						<div id="message4">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_03.jpg" />
+							<p>中国联通流量卡</p>
+							<p>50元</p>
+							<p>兑奖时间：截止到2021年2月31日</p>
+							<p>兑奖地址：长春市内联通营业厅登记统一存入</p>
+							<p>联系电话：无</p>
+							<p>注：2G/3G用户500M流量；4G用户1G流量;异地号码，非正常在用号码、已有相同流量包、融合套餐等不能使用</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+						</div>
+						<div id="message5">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_04.jpg" />
+							<p>S5健身俱乐部贵宾卡</p>
+							<p>100元</p>
+							<p>兑奖时间：截止到2021年4月30日</p>
+							<p>兑奖地址：南关区幸福街与蔚山路交会处绿地中央广场盘古家宴旁
+								高新区荷园路与华光街交会处东行50米安联国际
+								绿园区景阳大路与春城大街交会处北行150米</p>
+							<p>联系电话：0431—81887555；
+										0431—80811555；
+										0431—88006122</p>
+							<p>注：3店通用；单天无时间限制，器材限制使用；</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+						</div>
+						<div id="message6">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_06.jpg" />
+							<p>圣雅瑜伽SPA会所储值卡</p>
+							<p>2000元</p>
+							<p>兑奖时间：截止到2021年7月1日</p>
+							<p>兑奖地址：飞跃东路林田创客公园D栋2楼彩练新闻</p>
+							<p>联系电话：13943017772</p>
+							<p>注：每人限用1张；不含服装、垫子等费用；</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+						</div>
+						<div id="message7">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_07.jpg" />
+							<p>陶进二胡工作室</p>
+							<p>300元</p>
+							<p>兑奖时间：截止到2021年12月31日</p>
+							<p>兑奖地址：飞跃东路林田创客公园D栋2楼彩练新闻</p>
+							<p>联系电话：13943017772</p>
+							<p>注：学习二胡免一次课时费；</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+						</div>
+						<div id="message8">
+							<h3>提示</h3>
+							<div class="zj">
+							<p>恭喜您，中奖了</p>
+							<img src="彩练新闻/sudoku_08.jpg" />
+							<p>蛋壳科技VR体验卡</p>
+							<p>50元</p>
+							<p>兑奖时间：截止到2021年7月1日</p>
+							<p>兑奖地址：同志街与同光路交会处联通营业厅；
+										联通营业厅前进大街店；</p>
+							<p>联系电话：无</p>
+							<p>注：VR互动实战体验一次</p>
+							</div>
+							<div class="zj1">
+								<hr />
+							<p class="zj2">确定</p>
+						</div>
+						</div>
+						<div id="message9">
+							<h3>提示</h3>
+							<div class="zj3">
+							<p>您没有抽奖次数了</p>
+							</div>
+							<div class="zj4">
+								<hr />
+							<p class="zj5">确定</p>
+						</div>
+						</div>
+		</div>
+	</body>
+</html>
